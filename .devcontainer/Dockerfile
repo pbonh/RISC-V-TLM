@@ -58,5 +58,7 @@ RUN chown -R $USER_UID:$USER_GID /workspace
 
 RUN update-alternatives --install /usr/bin/bear bear /home/linuxbrew/.linuxbrew/bin/bear 100
 
+ENV LD_LIBRARY_PATH=/usr/local/systemc-2.3.3/lib-linux64
+
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
