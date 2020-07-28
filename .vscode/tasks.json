@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build All (Debug)",
+            "type": "shell",
+            "command": "cd buildDebug && ninja && cd ..",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build All (Release)",
+            "type": "shell",
+            "command": "cd buildRelease && ninja && cd ..",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "VLab Install (Debug)",
+            "type": "shell",
+            "command": "cd buildDebug && ninja install && cd ..",
+            "group": "build",
+            "dependsOn": [
+                "Build All (Debug)"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "VLab Install (Release)",
+            "type": "shell",
+            "command": "cd buildRelease${env:BRANCH_NAME} && ninja install && cd ..",
+            "group": "build",
+            "dependsOn": [
+                "Build All (Release)"
+            ],
+            "problemMatcher": []
+        },
+    ]
+}

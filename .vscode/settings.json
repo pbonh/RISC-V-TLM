@@ -1,0 +1,32 @@
+{
+    "telemetry.enableTelemetry": false,
+    "cmake.cmakePath": "/home/linuxbrew/.linuxbrew/bin/cmake",
+    "cmake.preferredGenerators": [
+        "Ninja",
+        "Unix Makefiles"
+    ],
+    "cmake.configureArgs": [
+        "-DCMAKE_C_COMPILER=/home/linuxbrew/.linuxbrew/bin/gcc-9",
+        "-DCMAKE_CXX_COMPILER=/home/linuxbrew/.linuxbrew/bin/g++-9",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+    ],
+    "cmake.buildDirectory": "${workspaceFolder}/build${buildType}",
+    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
+    "cmake.configureOnOpen": true,
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.enhancedColorization": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+    "C_Cpp.formatting": "Disabled",
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}",
+        "--background-index",
+        "--pch-storage=memory",
+        "--limit-results=0",
+        "--j=8",
+        "--all-scopes-completion"
+    ],
+    "clangd.path": "/home/linuxbrew/.linuxbrew/bin/clangd",
+    "clangd.semanticHighlighting": true
+}
