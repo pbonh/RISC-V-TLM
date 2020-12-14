@@ -46,5 +46,6 @@ doc/html
 env.sh
 gh-md-toc
 .clangd
+.cache
 build*
 compile_commands.json

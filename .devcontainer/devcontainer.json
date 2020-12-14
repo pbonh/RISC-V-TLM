@@ -4,6 +4,12 @@
     "name": "RISC-V-TLM C++ Ubuntu Dev Environment",
     "dockerFile": "Dockerfile",
     "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"],
+    // "runArgs": [ "-u", "1000:1000", "--security-opt", "label=disable" ],
+    "remoteUser": "vscode",
+    // "containerEnv": {
+    //     "HOME": ""
+    // },
+    // "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/workspace,type=bind",
     "workspaceFolder": "/home/vscode/workspace",
 
     // Set *default* container specific settings.json values on container create.
@@ -24,11 +30,13 @@
     "mounts": [
         "source=${localWorkspaceFolder},target=/home/vscode/workspace,type=bind,consistency=cached"
     ]
+    // "mounts": [
+    //     "type=bind,source=${localWorkspaceFolder},target=/home/vscode/workspace"
+    // ]
 
     // Use 'postCreateCommand' to run commands after the container is created.
     // "postCreateCommand": "bear make",
 
     // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
-    "remoteUser": "vscode"
 
 }

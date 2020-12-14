@@ -11,6 +11,7 @@ ARG USER_GID=$USER_UID
 RUN apt-get update \
     && apt-get -y install build-essential cmake cppcheck valgrind; \
     apt-get install -y \
+    sudo \
     apt-utils \
     ca-certificates \
     locales; \
@@ -39,9 +40,9 @@ USER linuxbrew
 WORKDIR /home/linuxbrew
 ENV PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH USER=linuxbrew
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" &> homebrew.log && brew config; exit 0
-RUN brew install python llvm navi fzf gcc@9 bear cmake; exit 0
-RUN /home/linuxbrew/.linuxbrew/opt/fzf/install
+RUN yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" &> homebrew.log && /home/linuxbrew/.linuxbrew/bin/brew config; exit 0
+RUN /home/linuxbrew/.linuxbrew/bin/brew install python llvm navi fzf gcc@9 bear cmake; exit 0
+RUN /home/linuxbrew/.linuxbrew/opt/fzf/install --xdg --key-bindings --completion --update-rc
 ENV PATH=$ORIGPATH
 
 USER root
@@ -51,13 +52,17 @@ USER root
 RUN chown -R $USER_UID:$USER_GID /home/linuxbrew \
     && chown -R $USER_UID:$USER_GID /usr/src/riscv64
 #RUN adduser $USERNAME $USERNAME
-RUN mkdir /workspace
+#RUN mkdir /workspace
 RUN mkdir /home/$USERNAME/workspace
+RUN mkdir /vscode
 RUN chown -R $USER_UID:$USER_GID /home/$USERNAME/workspace
-RUN chown -R $USER_UID:$USER_GID /workspace
+RUN chown -R $USER_UID:$USER_GID /vscode
+#RUN chown -R $USER_UID:$USER_GID /workspace
 
 RUN update-alternatives --install /usr/bin/bear bear /home/linuxbrew/.linuxbrew/bin/bear 100
 
+USER vscode
+ENV HOME=/home/$USERNAME
 ENV LD_LIBRARY_PATH=/usr/local/systemc-2.3.3/lib-linux64
 
 # Switch back to dialog for any ad-hoc use of apt-get
