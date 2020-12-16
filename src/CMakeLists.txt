@@ -2,6 +2,7 @@ file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/inc/*.h")
 add_library(riscv_tlm_sim
     A_extension.cpp
     CPU.cpp
+    CPU64.cpp
     MemoryInterface.cpp
     Timer.cpp
     BASE_ISA.cpp
