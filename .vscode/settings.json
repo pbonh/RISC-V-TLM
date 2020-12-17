@@ -5,11 +5,6 @@
         "Ninja",
         "Unix Makefiles"
     ],
-    "cmake.configureArgs": [
-        "-DCMAKE_C_COMPILER=/home/linuxbrew/.linuxbrew/bin/gcc-9",
-        "-DCMAKE_CXX_COMPILER=/home/linuxbrew/.linuxbrew/bin/g++-9",
-        "-DCMAKE_EXPORT_COMPILE_COMMANDS=1"
-    ],
     "cmake.buildDirectory": "${workspaceFolder}/build${buildType}",
     "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
     "cmake.configureOnOpen": true,
